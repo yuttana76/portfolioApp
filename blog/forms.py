@@ -1,6 +1,6 @@
 from django import forms
 
-class CommentForm(form.Form):
+class CommentForm(forms.Form):
     author = forms.CharField(
         max_length=60,
         widget=forms.TextInput(attrs={
@@ -9,9 +9,9 @@ class CommentForm(form.Form):
         })
 
     )
-    body = forms.CharField(widget==forms.Textarea(
+    body = forms.CharField(widget=forms.Textarea(
         attrs={
-            "class":"form-control",
-            "placeholder":"Leave a comment !"
+            "class": "form-control",
+            "placeholder": "Leave a comment!"
         })
     )

@@ -12,7 +12,7 @@ def blog_index(request):
 
 def blog_category(request, category):
     posts = Post.objects.filter(
-    categories__name__contains=category
+        categories__name__contains=category
     ).order_by(
         '-created_on'
     )
@@ -30,8 +30,12 @@ def blog_detail(request, pk):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = Comment(
-                author=form.clean_data["author"],
-                body=form.clean_data["body"],
+
+                # author=form.clean_data["author"],                
+                # body=form.clean_data["body"],
+                author=form.cleaned_data["author"],                
+                body=form.cleaned_data["body"],
+
                 post=post
             )
             comment.save()
